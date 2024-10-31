@@ -1,0 +1,30 @@
+# .github/actions/sonar-scan/action.yml
+name: "Reusable SonarQube Analysis"
+description: "Run SonarQube analysis with dynamic project names for pull requests and main branch"
+
+inputs:
+  project_key:
+    description: "SonarQube project key"
+    required: true
+  sonar_host_url:
+    description: "SonarQube server URL"
+    required: true
+  sonar_token:
+    description: "SonarQube authentication token"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: "11"
+
+    - name: Run SonarQube Scanner
+      run: |
+        sonar-scanner \
+          -Dsonar.projectKey=${{ inputs.project_key }} \
+          -Dsonar.host.url=${{ inputs.sonar_host_url }} \
+          -Dsonar.login=${{ inputs.sonar_token }}
+      shell: bash
