@@ -24,22 +24,20 @@ runs:
         cache: 'true'
 
 
-    - name: Install SonarScanner
-      run: |
-        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
-        unzip sonar-scanner-cli-4.6.2.2472-linux.zip
-        export PATH="$PATH:$(pwd)/sonar-scanner-4.6.2.2472-linux/bin"
-      shell: bash
-
-    - name: Verify SonarScanner installation
-      run: |
-        sonar-scanner --version
-      shell: bash
-      
-    - name: Run SonarQube Scanner
-      run: |
-        sonar-scanner \
-          -Dsonar.projectKey=${{ inputs.project_key }} \
-          -Dsonar.host.url=${{ inputs.sonar_host_url }} \
-          -Dsonar.login=${{ inputs.sonar_token }}
-      shell: bash
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@v2.1.0
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }} # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
+      with:
+        projectBaseDir: .
+        args: >
+          -Dsonar.projectKey=${{ inputs.project_key }} 
+          
+    # - name: Run SonarQube Scanner
+    #   run: |
+    #     sonar-scanner \
+    #       -Dsonar.projectKey=${{ inputs.project_key }} \
+    #       -Dsonar.host.url=${{ inputs.sonar_host_url }} \
+    #       -Dsonar.login=${{ inputs.sonar_token }}
+    #   shell: bash
