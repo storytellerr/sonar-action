@@ -20,7 +20,10 @@ runs:
       uses: actions/setup-java@v2
       with:
         java-version: "11"
-        distribution: 'temurin'
+        distribution: 'adoptopenjdk'
+        java-package: 'jdk'
+        cache: 'true'
+
 
     - name: Install SonarScanner
       run: |
