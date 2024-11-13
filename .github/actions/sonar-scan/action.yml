@@ -16,12 +16,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    # - name: Set up Java
-    #   uses: actions/setup-java@v2
-    #   with:
-    #     java-version: "11"
-    #     distribution: 'temurin'
-    #     cache: 'true'
+    - name: echo creds
+      run: |
+        echo "token= ${{ inputs.sonar_token }}"
+        echo "key= ${{ inputs.sonar_host_url }}"
 
 
     - name: SonarQube Scan
