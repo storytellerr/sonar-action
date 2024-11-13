@@ -20,6 +20,7 @@ runs:
       run: |
         echo "token= ${{ inputs.sonar_token }}"
         echo "key= ${{ inputs.sonar_host_url }}"
+      shell: bash
 
 
     - name: SonarQube Scan
