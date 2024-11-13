@@ -28,6 +28,12 @@ runs:
         unzip sonar-scanner-cli-4.6.2.2472-linux.zip
         export PATH="$PATH:$(pwd)/sonar-scanner-4.6.2.2472-linux/bin"
       shell: bash
+
+    - name: Verify SonarScanner installation
+      run: |
+        sonar-scanner --version
+      shell: bash
+      
     - name: Run SonarQube Scanner
       run: |
         sonar-scanner \
