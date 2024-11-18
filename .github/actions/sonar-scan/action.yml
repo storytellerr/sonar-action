@@ -24,7 +24,7 @@ runs:
 
 
     - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@v2.1.0
+      uses: sonarsource/sonarqube-scan-action@v4.0.0
       env:
         SONAR_TOKEN: ${{ inputs.sonar_token }}
         SONAR_HOST_URL: ${{ inputs.sonar_host_url }}  # Ex: v2.1.0, See the latest version at https://github.com/marketplace/actions/official-sonarqube-scan
