@@ -31,7 +31,8 @@ runs:
       with:
         projectBaseDir: .
         args: >
-          -Dsonar.projectKey=${{ inputs.project_key }} 
+          -Dsonar.projectKey=${{ inputs.project_key }}
+          -Dsonar.scm.provider=git
           
     # - name: Run SonarQube Scanner
     #   run: |
