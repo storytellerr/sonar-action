@@ -12,6 +12,9 @@ inputs:
   sonar_token:
     description: "SonarQube authentication token"
     required: true
+  pr_number:
+    description: "SonarQube analysis key"
+    required: true
 
 runs:
   using: "composite"
