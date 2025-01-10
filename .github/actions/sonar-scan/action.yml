@@ -23,6 +23,7 @@ runs:
       run: |
         echo "token= ${{ inputs.sonar_token }}"
         echo "key= ${{ inputs.sonar_host_url }}"
+        echo "key= ${{ inputs.pr_number }}"
       shell: bash
 
 
