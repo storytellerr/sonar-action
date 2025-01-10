@@ -33,6 +33,8 @@ runs:
         args: >
           -Dsonar.projectKey=${{ inputs.project_key }}
           -Dsonar.scm.provider=git
+          -Dsonar.projectVersion= ${{ inputs.pr_number }}
+          
           
     # - name: Run SonarQube Scanner
     #   run: |
